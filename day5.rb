@@ -9,19 +9,14 @@ File.open('day5.txt').each do |string|
 end
 
 strings.each do |string|
+
   nice = false
 
-  # three vowels
-  three_vowels = true if /(.*[aeiou]){3}/.match string
+  repeating_pair = true if /(.{2}).*\1/.match string
 
-  # double letter
-  double_letter = true if /(.)\1/.match string
-  #puts 'double' if nice
+  repeated_space = true if /(.).\1/.match string
 
-  # forbidden substrings
-  forbidden_strings = true unless bad_strings.inject(false) { |memo, word| string.include?(word) ? true : memo }
-
-  nice = three_vowels && double_letter && forbidden_strings
+  nice = repeating_pair && repeated_space
 
   if nice
     nice_count += 1
