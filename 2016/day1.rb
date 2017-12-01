@@ -1,6 +1,6 @@
 #! /home/zach/.rvm/rubies/ruby-2.3.1/bin/ruby
 moves      = Array.new
-visited    = Array.new
+visited    = Array.new [[0,0]]
 directions = Hash.new 0
 
 blocks = 0
@@ -14,7 +14,7 @@ input = File.new 'day1.txt', 'r'
 input.each_line do |line|
   moves.concat line.split(', ')
 end
-puts "there are #{moves.count} moves"
+#puts "there are #{moves.count} moves"
 
 moves.each_with_index do |move, i|
   direction, *magnitude = move.chars
@@ -44,7 +44,7 @@ moves.each_with_index do |move, i|
   puts "visited #{visited.inspect}"
 
   limit -= 1
-  break if limit == 0
+  #break if limit == 0
 end
 
 blocks = (directions[0] - directions[2]).abs + (directions[1] - directions[3]).abs
